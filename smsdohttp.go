@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"projectconf"
+	// "projectconf"
 	"sort"
 	"strings"
 )
@@ -18,7 +18,7 @@ import (
 //返回值说明：如果发送成功，返回true+阿里大鱼的返回信息
 //           否则，返回false+ 异常信息提示
 func DoHttpPost(m map[string]string) (success bool, response string) {
-	if pjsettings.Settings.Alidayu.AppKey == "" || pjsettings.Settings.Alidayu.AppSecret == "" {
+	if Settings.Alidayu.AppKey == "" || Settings.Alidayu.AppSecret == "" {
 		return false, "AppKey or AppSecret is requierd!"
 	}
 
@@ -60,12 +60,12 @@ func GetRequestBody(m map[string]string) (reader io.Reader, size int64) {
 
 	v := url.Values{}
 
-	signString := pjsettings.Settings.Alidayu.AppSecret
+	signString := Settings.Alidayu.AppSecret
 	for _, k := range keys {
 		v.Set(k, m[k])
 		signString += k + m[k]
 	}
-	signString += pjsettings.Settings.Alidayu.AppSecret
+	signString += Settings.Alidayu.AppSecret
 
 	signByte := md5.Sum([]byte(signString))
 	sign := strings.ToUpper(fmt.Sprintf("%x", signByte))

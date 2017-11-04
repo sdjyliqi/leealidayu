@@ -1,5 +1,5 @@
 //文件的功能：读取yaml 配置文件，然后初始化内存中。
-package pjsettings
+package alidayu
 
 import (
 	"fmt"
@@ -24,9 +24,9 @@ type PJSetting struct {
 var Settings PJSetting
 
 func init() {
-	fileContent, _ := ioutil.ReadFile("./projectconf/conf.yaml")
+	fileContent, _ := ioutil.ReadFile("./alidayu/conf.yaml")
 	yaml.Unmarshal([]byte(fileContent), &Settings)
-	fmt.Println("key:",Settings.Alidayu.AppKey)
-	fmt.Println("sec:",Settings.Alidayu.AppSecret)
+	fmt.Println("key:", Settings.Alidayu.AppKey)
+	fmt.Println("sec:", Settings.Alidayu.AppSecret)
 
 }
