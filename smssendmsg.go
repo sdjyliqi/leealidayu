@@ -9,7 +9,7 @@ func SendSMS(recNum, smsFreeSign, smsTemplateId, smsPaloadPars string) (success 
 		return false, "Parameter not complete"
 	}
 	params := make(map[string]string)
-	params["app_key"] = Settings.Alidayu.AppKey
+	params["app_key"] = Settings.AliMSM.AppKey
 	params["format"] = "json"
 	params["method"] = "alibaba.aliqin.fc.sms.num.send"
 	params["sign_method"] = "md5"

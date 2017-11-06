@@ -7,18 +7,16 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	// "projectconf"
 	"sort"
 	"strings"
 )
 
-//	"projectconf"
 //函数功能：向alidayu发送http请求
 //参数说明：m为http请求参数，map字典格式
 //返回值说明：如果发送成功，返回true+阿里大鱼的返回信息
 //           否则，返回false+ 异常信息提示
 func DoHttpPost(m map[string]string) (success bool, response string) {
-	if Settings.Alidayu.AppKey == "" || Settings.Alidayu.AppSecret == "" {
+	if Settings.AliMSM.AppKey == "" || Settings.AliMSM.AppSecret == "" {
 		return false, "AppKey or AppSecret is requierd!"
 	}
 
@@ -60,12 +58,12 @@ func GetRequestBody(m map[string]string) (reader io.Reader, size int64) {
 
 	v := url.Values{}
 
-	signString := Settings.Alidayu.AppSecret
+	signString := Settings.AliMSM.AppSecret
 	for _, k := range keys {
 		v.Set(k, m[k])
 		signString += k + m[k]
 	}
-	signString += Settings.Alidayu.AppSecret
+	signString += Settings.AliMSM.AppSecret
 
 	signByte := md5.Sum([]byte(signString))
 	sign := strings.ToUpper(fmt.Sprintf("%x", signByte))

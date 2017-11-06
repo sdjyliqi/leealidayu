@@ -9,11 +9,11 @@ import (
 )
 
 type PJSetting struct {
-	Alidayu struct {
-		AppKey     string `yaml:"AppKey"`
+	AliMSM struct {
+		AppKey     string `yaml:"Appkey"`
 		TemplateId string `yaml:"TemplateId"`
 		AppSecret  string `yaml:"AppSecret"`
-		UseHttps   bool   `yaml:"Https"`
+		Https      bool   `yaml:"Https"`
 	}
 }
 
@@ -24,9 +24,10 @@ type PJSetting struct {
 var Settings PJSetting
 
 func init() {
+
 	fileContent, _ := ioutil.ReadFile("./alidayu/conf.yaml")
 	yaml.Unmarshal([]byte(fileContent), &Settings)
-	fmt.Println("key:", Settings.Alidayu.AppKey)
-	fmt.Println("sec:", Settings.Alidayu.AppSecret)
+	fmt.Println("key:", Settings.AliMSM.AppKey)
+	fmt.Println("sec:", Settings.AliMSM.AppSecret)
 
 }
