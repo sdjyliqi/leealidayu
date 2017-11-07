@@ -23,11 +23,9 @@ type PJSetting struct {
 //备注2：缩进要用空格
 var Settings PJSetting
 
-func init() {
-
-	fileContent, _ := ioutil.ReadFile("./alidayu/conf.yaml")
+func SettingInit(filePath string) {
+	fileContent, _ := ioutil.ReadFile(filePath)
 	yaml.Unmarshal([]byte(fileContent), &Settings)
 	fmt.Println("key:", Settings.AliMSM.AppKey)
 	fmt.Println("sec:", Settings.AliMSM.AppSecret)
-
 }
