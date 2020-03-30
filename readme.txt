@@ -2,9 +2,9 @@
 
 第一步：首先构建yaml格式的阿里大鱼配置文件，具体内容如下：
 alimsm:
-  Appkey: "24681239"
-  TemplateId: "SMS_108020127"
-  AppSecret: "a01ae1342cc8122da4da72c0a679dab0"
+  Appkey: "*****"
+  TemplateId: "SMS_*******"
+  AppSecret: "a01ae1342cc8122da4da72c******"
   Https: false
 
 第二部 调用阿里大鱼的短信模块
